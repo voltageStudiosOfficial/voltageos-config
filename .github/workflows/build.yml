@@ -1,8 +1,7 @@
-name: Validate configuration
+name: Build
 
 on:
-  push:
-  pull_request:
+  tag:
 
 permissions:
   contents: read
@@ -40,6 +39,10 @@ jobs:
   build:
     needs: validate
     name: Build ${{ matrix.arch }} on Fedora 44
+    permissions:
+      contents: read
+      id-token: write
+      attestations: write
     strategy:
       fail-fast: false
       matrix:
@@ -85,3 +88,8 @@ jobs:
           name: voltageos-lagtrain-${{ matrix.arch }}
           path: build/image/
           if-no-files-found: error
+
+      - name: Attest ${{ matrix.arch }} image provenance
+        uses: actions/attest-build-provenance@v2
+        with:
+          subject-path: build/image/**/*
