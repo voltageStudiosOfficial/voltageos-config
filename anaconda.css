@@ -1,56 +1,48 @@
 /* voltage!os Anaconda installer theme: codename lagtrain */
 
-@define-color voltage_bg #120b10;
-@define-color voltage_panel #21131b;
-@define-color voltage_text #fff1f4;
-@define-color voltage_muted #cbaeb8;
-@define-color voltage_accent #ff3b5f;
-@define-color voltage_accent_dark #8f1d3d;
-@define-color voltage_border #633044;
-
 window,
 .background {
-  background-color: @voltage_bg;
-  color: @voltage_text;
+  background-color: #120b10;
+  color: #fff1f4;
 }
 
 headerbar,
 .anaconda-header,
 .sidebar {
-  background-color: @voltage_panel;
-  color: @voltage_text;
-  border-bottom: 1px solid @voltage_accent_dark;
+  background-color: #21131b;
+  color: #fff1f4;
+  border-bottom: 1px solid #8f1d3d;
 }
 
 label,
 checkbutton,
 radiobutton {
-  color: @voltage_text;
+  color: #fff1f4;
 }
 
 .secondary,
 .dim-label,
 .subtitle {
-  color: @voltage_muted;
+  color: #cbaeb8;
 }
 
 button {
   min-height: 2.2em;
   padding: 0.35em 1em;
-  border: 1px solid @voltage_border;
+  border: 1px solid #633044;
   border-radius: 4px;
-  background-color: @voltage_panel;
-  color: @voltage_text;
+  background-color: #21131b;
+  color: #fff1f4;
 }
 
 button:hover {
-  background-color: @voltage_accent_dark;
+  background-color: #8f1d3d;
   color: #ffffff;
 }
 
 button.suggested-action,
 button.default {
-  background-color: @voltage_accent;
+  background-color: #ff3b5f;
   color: #21070d;
   font-weight: bold;
 }
@@ -62,26 +54,26 @@ textview {
   border: 1px solid @voltage_border;
   border-radius: 4px;
   background-color: #0d080c;
-  color: @voltage_text;
-  caret-color: @voltage_accent;
+  color: #fff1f4;
+  caret-color: #ff3b5f;
 }
 
 entry:focus,
 spinbutton:focus,
 combobox button:focus,
 button:focus {
-  border-color: @voltage_accent;
-  outline-color: @voltage_accent;
+  border-color: #ff3b5f;
+  outline-color: #ff3b5f;
 }
 
 checkbutton check,
 radiobutton radio {
-  border-color: @voltage_border;
+  border-color: #633044;
 }
 
 checkbutton check:checked,
 radiobutton radio:checked {
-  background-color: @voltage_accent;
+  background-color: #ff3b5f;
   color: #21070d;
 }
 
@@ -91,5 +83,5 @@ progressbar trough {
 
 progressbar progress,
 scale highlight {
-  background-color: @voltage_accent;
+  background-color: #ff3b5f;
 }
