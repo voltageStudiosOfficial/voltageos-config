@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<image schemaversion="8.0" name="voltageos">
+  <description type="system">
+    <author>Voltage Studios</author>
+    <contact>voltageStudiosOfficial</contact>
+    <specification>voltage!os, codename lagtrain</specification>
+  </description>
+
+  <preferences>
+    <version>0.1.0</version>
+    <packagemanager>dnf5</packagemanager>
+    <locale>en_US.UTF-8</locale>
+    <keytable>us</keytable>
+    <timezone>UTC</timezone>
+    <type image="iso" filesystem="xfs" bootpartition="true" bootloader="grub2" firmware="uefi"/>
+  </preferences>
+
+  <repository type="rpm-md" alias="fedora">
+    <source path="https://dl.fedoraproject.org/pub/fedora/linux/releases/44/Everything/x86_64/os/"/>
+  </repository>
+  <repository type="rpm-md" alias="fedora-updates">
+    <source path="https://dl.fedoraproject.org/pub/fedora/linux/updates/44/Everything/x86_64/"/>
+  </repository>
+  <repository type="rpm-md" alias="vivaldi">
+    <source path="https://repo.vivaldi.com/archive/rpm/x86_64"/>
+  </repository>
+
+  <packages type="image" patternType="onlyRequired">
+    <package name="filesystem"/>
+    <package name="bash"/>
+    <package name="coreutils"/>
+    <package name="dnf5"/>
+    <package name="NetworkManager"/>
+    <package name="NetworkManager-wifi"/>
+    <package name="firewalld"/>
+    <package name="chrony"/>
+    <package name="sudo"/>
+    <package name="openssh-server"/>
+    <package name="plasma-desktop"/>
+    <package name="plasma-workspace"/>
+    <package name="plasma-nm"/>
+    <package name="plasma-pa"/>
+    <package name="plasma-welcome"/>
+    <package name="kde-cli-tools"/>
+    <package name="kde-gtk-config"/>
+    <package name="kwin"/>
+    <package name="dolphin"/>
+    <package name="konsole"/>
+    <package name="pipewire"/>
+    <package name="wireplumber"/>
+    <package name="sddm"/>
+    <package name="xorg-x11-server-Xorg"/>
+    <package name="xdg-user-dirs"/>
+    <package name="thunderbird"/>
+    <package name="vivaldi-stable"/>
+    <package name="vim-minimal"/>
+    <package name="curl"/>
+    <package name="git-core"/>
+    <package name="bash-completion"/>
+  </packages>
+</image>

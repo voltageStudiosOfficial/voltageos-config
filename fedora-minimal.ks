@@ -1,6 +1,7 @@
 text
-url --mirrorlist="https://mirrors.fedoraproject.org/mirrorlist?repo=fedora-$releasever&arch=$basearch"
-repo --name=fedora-updates --mirrorlist="https://mirrors.fedoraproject.org/mirrorlist?repo=updates-released-f$releasever&arch=$basearch"
+url --mirrorlist="https://mirrors.fedoraproject.org/mirrorlist?repo=fedora-44&arch=$basearch"
+repo --name=fedora-updates --mirrorlist="https://mirrors.fedoraproject.org/mirrorlist?repo=updates-released-f44&arch=$basearch"
+repo --name=vivaldi --baseurl="https://repo.vivaldi.com/archive/rpm/x86_64" --install
 
 lang en_US.UTF-8
 keyboard us
@@ -41,24 +42,17 @@ plasma-welcome
 plasma-workspace
 sddm
 sudo
+thunderbird
+vivaldi-stable
 vim-minimal
 wireplumber
 xorg-x11-server-Xorg
 xdg-user-dirs
+-kmail
+-kontact
 %end
 
 %post
-cat > /etc/yum.repos.d/vivaldi.repo <<'REPO'
-[vivaldi]
-name=Vivaldi Browser
-baseurl=https://repo.vivaldi.com/archive/rpm/x86_64
-enabled=1
-gpgcheck=1
-gpgkey=https://repo.vivaldi.com/archive/linux_signing_key.pub
-REPO
-
-dnf5 -y install vivaldi-stable
-
 cat > /etc/voltage-os-release <<'RELEASE'
 NAME="voltage!os"
 CODENAME=lagtrain
