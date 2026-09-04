@@ -1,7 +1,7 @@
 text
 url --mirrorlist="https://mirrors.fedoraproject.org/mirrorlist?repo=fedora-44&arch=$basearch"
 repo --name=fedora-updates --mirrorlist="https://mirrors.fedoraproject.org/mirrorlist?repo=updates-released-f44&arch=$basearch"
-repo --name=vivaldi --baseurl="https://repo.vivaldi.com/archive/rpm/x86_64" --install
+repo --name=vivaldi --baseurl="https://repo.vivaldi.com/archive/rpm/$basearch" --install
 
 lang en_US.UTF-8
 keyboard us

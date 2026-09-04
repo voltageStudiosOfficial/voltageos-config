@@ -1,0 +1,87 @@
+name: Validate configuration
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install XML validator
+        run: sudo apt-get update && sudo apt-get install --no-install-recommends -y libxml2-utils
+
+      - name: Validate Kiwi-NG XML
+        run: xmllint --noout kiwi/config.xml
+
+      - name: Validate configuration content
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -Fq 'repo=fedora-44' fedora-minimal.ks
+          grep -Fq 'repo=updates-released-f44' fedora-minimal.ks
+          grep -Fq 'plasma-desktop' fedora-minimal.ks
+          grep -Fq 'plasma-welcome' fedora-minimal.ks
+          grep -Fq 'thunderbird' fedora-minimal.ks
+          grep -Fq 'vivaldi-stable' fedora-minimal.ks
+          grep -Fq 'firstboot --enable' fedora-minimal.ks
+          ! grep -Fq 'user --name=voltage' fedora-minimal.ks
+          grep -Fq 'BASE_VERSION=44' os-release
+
+      - name: Check whitespace
+        run: git diff --check
+
+  build:
+    needs: validate
+    name: Build ${{ matrix.arch }} on Fedora 44
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - arch: x86_64
+            runner: ubuntu-24.04
+          - arch: aarch64
+            runner: ubuntu-24.04-arm
+    runs-on: ${{ matrix.runner }}
+    container: fedora:44
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install Kiwi-NG
+        run: dnf -y install kiwi-cli
+
+      - name: Select ${{ matrix.arch }} description
+        run: |
+          mkdir -p build
+          cp -a kiwi build/kiwi
+          sed -i 's/x86_64/${{ matrix.arch }}/g' build/kiwi/config.xml
+
+      - name: Prepare ${{ matrix.arch }} image root
+        run: |
+          mkdir -p build/root
+          kiwi-ng system prepare \
+            --description ./build/kiwi \
+            --target-arch ${{ matrix.arch }} \
+            --target-dir ./build/root
+
+      - name: Build ${{ matrix.arch }} image
+        run: |
+          mkdir -p build/image
+          kiwi-ng system build \
+            --description ./build/kiwi \
+            --target-arch ${{ matrix.arch }} \
+            --target-dir ./build/image
+
+      - name: Upload ${{ matrix.arch }} image artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: voltageos-lagtrain-${{ matrix.arch }}
+          path: build/image/
+          if-no-files-found: error

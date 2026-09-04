@@ -10,7 +10,8 @@ included in the installer package transaction, then
 uses firstboot and KDE's `plasma-welcome` first-run experiences after the
 initial setup account is created.
 
-The Vivaldi repository is configured for Fedora x86_64 systems.
+The image targets Fedora `x86_64` and `aarch64` systems. The Vivaldi repository
+uses the matching RPM architecture path.
 Thunderbird is pre-bundled, while KDE's KMail and Kontact mail applications
 are excluded.
 
@@ -37,4 +38,5 @@ integration to be loaded at install time.
 
 See [KIWI-NG.md](KIWI-NG.md) for Kiwi-NG installation and image-build
 instructions. Kiwi-NG uses an XML description; `fedora-minimal.ks` remains the
-Anaconda Kickstart path.
+Anaconda Kickstart path. GitHub Actions builds with Fedora 44; Debian or Ubuntu
+can be used for local Kiwi-NG builds when the `kiwi-ng` package is available.
