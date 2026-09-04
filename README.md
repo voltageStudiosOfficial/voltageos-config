@@ -31,6 +31,10 @@ Test it in a virtual machine before installing on hardware.
 `/etc/os-release` in the image build to set the name, codename, version, and
 project URLs reported by the operating system.
 
+`anaconda.css` is the source stylesheet for a voltage!os-themed Anaconda
+installer. It must be included through the installer image or Anaconda theme
+integration to be loaded at install time.
+
 See [KIWI-NG.md](KIWI-NG.md) for Kiwi-NG installation and image-build
 instructions. Kiwi-NG uses an XML description; `fedora-minimal.ks` remains the
 Anaconda Kickstart path.

@@ -1,0 +1,95 @@
+/* voltage!os Anaconda installer theme: codename lagtrain */
+
+@define-color voltage_bg #120b10;
+@define-color voltage_panel #21131b;
+@define-color voltage_text #fff1f4;
+@define-color voltage_muted #cbaeb8;
+@define-color voltage_accent #ff3b5f;
+@define-color voltage_accent_dark #8f1d3d;
+@define-color voltage_border #633044;
+
+window,
+.background {
+  background-color: @voltage_bg;
+  color: @voltage_text;
+}
+
+headerbar,
+.anaconda-header,
+.sidebar {
+  background-color: @voltage_panel;
+  color: @voltage_text;
+  border-bottom: 1px solid @voltage_accent_dark;
+}
+
+label,
+checkbutton,
+radiobutton {
+  color: @voltage_text;
+}
+
+.secondary,
+.dim-label,
+.subtitle {
+  color: @voltage_muted;
+}
+
+button {
+  min-height: 2.2em;
+  padding: 0.35em 1em;
+  border: 1px solid @voltage_border;
+  border-radius: 4px;
+  background-color: @voltage_panel;
+  color: @voltage_text;
+}
+
+button:hover {
+  background-color: @voltage_accent_dark;
+  color: #ffffff;
+}
+
+button.suggested-action,
+button.default {
+  background-color: @voltage_accent;
+  color: #21070d;
+  font-weight: bold;
+}
+
+entry,
+spinbutton,
+combobox button,
+textview {
+  border: 1px solid @voltage_border;
+  border-radius: 4px;
+  background-color: #0d080c;
+  color: @voltage_text;
+  caret-color: @voltage_accent;
+}
+
+entry:focus,
+spinbutton:focus,
+combobox button:focus,
+button:focus {
+  border-color: @voltage_accent;
+  outline-color: @voltage_accent;
+}
+
+checkbutton check,
+radiobutton radio {
+  border-color: @voltage_border;
+}
+
+checkbutton check:checked,
+radiobutton radio:checked {
+  background-color: @voltage_accent;
+  color: #21070d;
+}
+
+progressbar trough {
+  background-color: #0d080c;
+}
+
+progressbar progress,
+scale highlight {
+  background-color: @voltage_accent;
+}
