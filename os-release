@@ -1,0 +1,9 @@
+NAME="voltage!os"
+ID=voltageos
+ID_LIKE=fedora
+PRETTY_NAME="voltage!os"
+VERSION="lagtrain"
+VERSION_ID=lagtrain
+VERSION_CODENAME=lagtrain
+HOME_URL="https://github.com/voltageStudiosOfficial/voltageos-config"
+BUG_REPORT_URL="https://github.com/voltageStudiosOfficial/voltageos-config/issues"
