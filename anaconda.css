@@ -51,7 +51,7 @@ entry,
 spinbutton,
 combobox button,
 textview {
-  border: 1px solid @voltage_border;
+  border: 1px solid #633044;
   border-radius: 4px;
   background-color: #0d080c;
   color: #fff1f4;
